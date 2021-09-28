@@ -5,7 +5,7 @@ date: "9/27/2021"
 output: github_document
 ---
 
-## Problem 1
+# Problem 1
 
 ```{r}
 library("tidyverse")
@@ -28,5 +28,30 @@ mean(pull(.data=hw1_p1_df,var= vec_factor))
 as.numeric(pull(.data=hw1_p1_df,var= vec_logical))
 as.numeric(pull(.data=hw1_p1_df,var= vec_character))
 as.numeric(pull(.data=hw1_p1_df,var= vec_factor))
+```
+
+The mean function could only indentify the numeric vector. SO, if we use mean to logical, character or factor vectors, it won't work.
+
+With the function as.numeric, we could transfer som vectors into numeric vector for further options.
+
+# Problem 2
+
+```{r, echo = FALSE}
+#install.packages("palmerpenguins")
+data("penguins", package = "palmerpenguins")
+```
+
+```{r}
+names(penguins)
+str(penguins)
+nrow(penguins)
+ncol(penguins)
+mean(pull(.data = penguins,var = (flipper_length_mm)),na.rm = TRUE)
+```
+
+```{r}
+ggplot(penguins, aes(x = bill_length_mm, y = flipper_length_mm,color=species) ) + geom_point()
+
+ggsave("scatter_penguins.pdf", height = 4, width = 6)
 ```
 
